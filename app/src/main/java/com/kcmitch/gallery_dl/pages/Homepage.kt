@@ -1,6 +1,7 @@
 package com.kcmitch.gallery_dl.pages
 
 import androidx.compose.animation.*
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -15,10 +16,13 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.kcmitch.gallery_dl.R
 import com.kcmitch.gallery_dl.components.BlankHeaderContainer
 import com.kcmitch.gallery_dl.ui.GalleryDlViewModel
 import com.kcmitch.gallery_dl.ui.components.*
@@ -62,53 +66,19 @@ fun Homepage(
                 .weight(1f)
         ) {
         if (activeElements.isEmpty()) {
-            // Clean / Blank Home Screen State with subtle watermark hint
+            // Clean / Blank Home Screen State with static non-clickable WebP artwork
             Box(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center,
-                    modifier = Modifier.padding(24.dp)
-                ) {
-                    IconButton(
-                        onClick = { showAddDialog = true },
-                        modifier = Modifier
-                            .size(72.dp)
-                            .background(
-                                color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.4f),
-                                shape = CircleShape
-                            )
-                            .border(2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.5f), CircleShape)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Add,
-                            contentDescription = "Add Element",
-                            tint = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.size(36.dp)
-                        )
-                    }
-
-                    Spacer(modifier = Modifier.height(16.dp))
-
-                    Text(
-                        text = "Clean Canvas",
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.SemiBold,
-                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f)
-                    )
-
-                    Spacer(modifier = Modifier.height(6.dp))
-
-                    Text(
-                        text = "Tap the center circular button to add elements & build your gallery-dl command",
-                        style = MaterialTheme.typography.bodySmall,
-                        textAlign = TextAlign.Center,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
-                        modifier = Modifier.widthIn(max = 280.dp)
-                    )
-                }
+                Image(
+                    painter = painterResource(id = R.drawable.homepage_background),
+                    contentDescription = "Gallery DL Homepage Illustration",
+                    modifier = Modifier
+                        .size(280.dp)
+                        .align(Alignment.Center),
+                    contentScale = ContentScale.Fit
+                )
             }
         } else {
             // Dynamic Active Elements Builder List
