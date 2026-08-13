@@ -1,0 +1,21 @@
+*.iml
+.gradle
+/build
+/app/build
+/.build-outputs
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+debug.keystore
+debug.keystore.base64
+
+# Ignore AppConfig.kt as specified in rules
+AppConfig.kt
+**/AppConfig.kt
+
+# IDE / OS
+.idea/
+.DS_Store
+/builds
+.navigation/

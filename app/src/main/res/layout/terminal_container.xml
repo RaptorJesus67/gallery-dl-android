@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Repeatable Design Element: Terminal Container -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="?attr/colorSurface"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/terminal_output"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fontFamily="monospace"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="11sp" />
+</FrameLayout>
