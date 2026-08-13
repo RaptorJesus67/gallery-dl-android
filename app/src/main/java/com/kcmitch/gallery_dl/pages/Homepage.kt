@@ -66,17 +66,15 @@ fun Homepage(
                 .weight(1f)
         ) {
         if (activeElements.isEmpty()) {
-            // Clean / Blank Home Screen State with static non-clickable WebP artwork
+            // Clean Home Screen State with non-clickable background image
             Box(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.homepage_background),
-                    contentDescription = "Gallery DL Homepage Illustration",
-                    modifier = Modifier
-                        .size(280.dp)
-                        .align(Alignment.Center),
+                    contentDescription = null,
+                    modifier = Modifier.size(280.dp),
                     contentScale = ContentScale.Fit
                 )
             }
