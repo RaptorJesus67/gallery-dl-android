@@ -66,16 +66,13 @@ fun Homepage(
                 .weight(1f)
         ) {
         if (activeElements.isEmpty()) {
-            // Clean Home Screen State with non-clickable background image
+            // Clean Home Screen State with vector photo stack graphic (25% smaller, dynamic theme colors)
             Box(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.homepage_background),
-                    contentDescription = null,
-                    modifier = Modifier.size(280.dp),
-                    contentScale = ContentScale.Fit
+                StackedPhotoVectorGraphic(
+                    modifier = Modifier.size(210.dp)
                 )
             }
         } else {

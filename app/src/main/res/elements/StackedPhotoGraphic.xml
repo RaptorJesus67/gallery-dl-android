@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Repeatable XML Element for Stacked Photo Graphic Vector Structure -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="210dp"
+    android:height="210dp"
+    android:viewportWidth="800"
+    android:viewportHeight="800">
+    <group
+        android:pivotX="400"
+        android:pivotY="400"
+        android:rotation="-16"
+        android:translateX="-150"
+        android:translateY="-180">
+        <path
+            android:pathData="M250,200 L550,200 A16,16 0 0 1 566,216 L566,544 A16,16 0 0 1 550,560 L250,560 A16,16 0 0 1 234,544 L234,216 A16,16 0 0 1 250,200 Z"
+            android:strokeColor="?attr/colorOutline"
+            android:strokeWidth="10" />
+    </group>
+    <group
+        android:pivotX="400"
+        android:pivotY="400"
+        android:rotation="4"
+        android:translateX="-110"
+        android:translateY="-160">
+        <path
+            android:pathData="M250,220 L550,220 A16,16 0 0 1 566,236 L566,564 A16,16 0 0 1 550,580 L250,580 A16,16 0 0 1 234,564 L234,236 A16,16 0 0 1 250,220 Z"
+            android:strokeColor="?attr/colorPrimary"
+            android:strokeWidth="12" />
+        <path
+            android:pathData="M340,305 A22,22 0 1 0 340,349 A22,22 0 1 0 340,305 Z"
+            android:strokeColor="?attr/colorTertiary"
+            android:strokeWidth="8" />
+        <path
+            android:pathData="M295,440 L375,345 L435,405 L465,375 L505,440"
+            android:strokeColor="?attr/colorPrimary"
+            android:strokeWidth="9"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
+    </group>
+</vector>

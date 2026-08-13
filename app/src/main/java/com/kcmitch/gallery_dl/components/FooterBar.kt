@@ -3,6 +3,7 @@ package com.kcmitch.gallery_dl.components
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
@@ -38,89 +39,103 @@ fun FooterBar(
     onAddButtonClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Surface(
+    Box(
         modifier = modifier.fillMaxWidth(),
-        color = MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.95f),
-        tonalElevation = 12.dp,
-        shadowElevation = 16.dp,
-        border = androidx.compose.foundation.BorderStroke(
-            width = 1.dp,
-            color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.35f)
-        )
+        contentAlignment = Alignment.BottomCenter
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .windowInsetsPadding(WindowInsets.navigationBars)
-                .height(72.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceEvenly
+        // Bottom Navigation Surface Bar
+        Surface(
+            modifier = Modifier.fillMaxWidth(),
+            color = MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.95f),
+            tonalElevation = 12.dp,
+            shadowElevation = 16.dp,
+            border = androidx.compose.foundation.BorderStroke(
+                width = 1.dp,
+                color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.35f)
+            )
         ) {
-            // Button 0: Terminal
-            FooterNavItem(
-                icon = Icons.Default.Terminal,
-                label = "Terminal",
-                isSelected = currentPage == 0,
-                onClick = { onPageSelected(0) },
-                modifier = Modifier.weight(1f)
-            )
-
-            // Button 1: Placeholder
-            FooterNavItem(
-                icon = Icons.Default.Extension,
-                label = "Tools",
-                isSelected = currentPage == 1,
-                onClick = { onPageSelected(1) },
-                modifier = Modifier.weight(1f)
-            )
-
-            // Button 2: Center Thumb-Sized Circular Button (Homepage / Add Elements)
-            Box(
+            Row(
                 modifier = Modifier
-                    .weight(1f)
-                    .fillMaxHeight(),
-                contentAlignment = Alignment.Center
+                    .fillMaxWidth()
+                    .windowInsetsPadding(WindowInsets.navigationBars)
+                    .height(68.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                val isCenterActive = currentPage == 2
-                IconButton(
-                    onClick = {
-                        onPageSelected(2)
-                        onAddButtonClick()
-                    },
-                    modifier = Modifier
-                        .size(54.dp)
-                        .shadow(elevation = 8.dp, shape = CircleShape)
-                        .background(
-                            color = if (isCenterActive) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondaryContainer,
-                            shape = CircleShape
-                        )
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Add,
-                        contentDescription = "Add Element / Home",
-                        tint = if (isCenterActive) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSecondaryContainer,
-                        modifier = Modifier.size(28.dp)
-                    )
-                }
+                // Button 0: Terminal
+                FooterNavItem(
+                    icon = Icons.Default.Terminal,
+                    label = "Terminal",
+                    isSelected = currentPage == 0,
+                    onClick = { onPageSelected(0) },
+                    modifier = Modifier.weight(1f)
+                )
+
+                // Button 1: Placeholder
+                FooterNavItem(
+                    icon = Icons.Default.Extension,
+                    label = "Tools",
+                    isSelected = currentPage == 1,
+                    onClick = { onPageSelected(1) },
+                    modifier = Modifier.weight(1f)
+                )
+
+                // Empty Center Slot for the raised Floating Add Button
+                Spacer(modifier = Modifier.weight(1f))
+
+                // Button 3: Gallery
+                FooterNavItem(
+                    icon = Icons.Default.Collections,
+                    label = "Gallery",
+                    isSelected = currentPage == 3,
+                    onClick = { onPageSelected(3) },
+                    modifier = Modifier.weight(1f)
+                )
+
+                // Button 4: Settings
+                FooterNavItem(
+                    icon = Icons.Default.Settings,
+                    label = "Settings",
+                    isSelected = currentPage == 4,
+                    onClick = { onPageSelected(4) },
+                    modifier = Modifier.weight(1f)
+                )
             }
+        }
 
-            // Button 3: Gallery
-            FooterNavItem(
-                icon = Icons.Default.Collections,
-                label = "Gallery",
-                isSelected = currentPage == 3,
-                onClick = { onPageSelected(3) },
-                modifier = Modifier.weight(1f)
-            )
-
-            // Button 4: Settings
-            FooterNavItem(
-                icon = Icons.Default.Settings,
-                label = "Settings",
-                isSelected = currentPage == 4,
-                onClick = { onPageSelected(4) },
-                modifier = Modifier.weight(1f)
-            )
+        // Raised Floating Center Add Button (rises above the top of the footer bar)
+        val isCenterActive = currentPage == 2
+        Box(
+            modifier = Modifier
+                .align(Alignment.TopCenter)
+                .offset(y = (-20).dp),
+            contentAlignment = Alignment.Center
+        ) {
+            IconButton(
+                onClick = {
+                    onPageSelected(2)
+                    onAddButtonClick()
+                },
+                modifier = Modifier
+                    .size(60.dp)
+                    .shadow(elevation = 12.dp, shape = CircleShape)
+                    .background(
+                        color = if (isCenterActive) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.primaryContainer,
+                        shape = CircleShape
+                    )
+                    .border(
+                        width = 4.dp,
+                        color = MaterialTheme.colorScheme.surface,
+                        shape = CircleShape
+                    )
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = "Add Element / Home",
+                    tint = if (isCenterActive) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onPrimaryContainer,
+                    modifier = Modifier.size(32.dp)
+                )
+            }
         }
     }
 }
