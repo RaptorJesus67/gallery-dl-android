@@ -1,6 +1,0 @@
-{
-  "name": "Gallery-dl GUI",
-  "description": "Modern Jetpack Compose GUI for gallery-dl media downloader with site preset configuration, cookie editor, and CLI command generator.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
